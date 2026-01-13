@@ -1,0 +1,738 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Datafund Provenance - Decentralized AI Agent Audit Trails">
+  <!-- Animated Gradient Background -->
+  <div class="hero-gradient-container">
+    <canvas id="gradient-canvas"></canvas>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="relative z-10 max-w-7xl px-6 lg:px-10 pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center mx-auto">
+    <div class="flex items-center gap-3">
+      <img src="/assets/datafund.svg" class="h-[38px]" alt="Datafund Logo" />
+      <span class="text-sm font-mono text-gray-500">/ provenance</span>
+    </div>
+    <div class="flex gap-4 mt-6 sm:mt-0 items-center">
+      <a href="https://github.com/datafund/provenance"
+         class="hover:text-blue-500 transition-colors"
+         target="_blank"
+         aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="#demo"
+         class="bg-blue-500 rounded-[2px] font-bold text-sm py-2 px-4 text-white hover:bg-opacity-75 transition-all">
+        Try Live Demo
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative z-10 max-w-7xl px-6 lg:px-10 mx-auto mt-16 sm:mt-24 mb-16 sm:mb-24">
+    <div class="flex flex-col gap-6 text-center max-w-4xl mx-auto">
+      <!-- Badges -->
+      <div class="flex justify-center gap-3 flex-wrap">
+        <span class="text-xs font-mono bg-gray-100 px-3 py-1 rounded">100% Open Source</span>
+        <span class="text-xs font-mono bg-gray-100 px-3 py-1 rounded">W3C PROV-O</span>
+        <span class="text-xs font-mono bg-blue-500 text-white px-3 py-1 rounded animate-pulse">Live Demo Available</span>
+      </div>
+
+      <h1 class="font-bold text-4xl sm:text-6xl sm:leading-[1.1] text-balance">
+        Where AI Agents<br/>
+        <span class="text-blue-500">Store Their Receipts</span>
+      </h1>
+
+      <p class="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        <strong class="text-black">No vendor lock-in. No central authority. Verifiable by anyone.</strong>
+        <br/>
+        Decentralized provenance storage for the AI economy.
+      </p>
+
+      <!-- Data Sovereignty Highlight -->
+      <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 max-w-xl mx-auto">
+        <p class="text-blue-800 font-medium">
+          "Your provenance. Your infrastructure. Your rules."
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+        <a href="#demo"
+           class="bg-blue-500 rounded-[2px] font-bold text-lg py-3 px-8 text-white hover:bg-opacity-75 transition-all shadow-lg hover:shadow-xl">
+          Try Live Demo
+        </a>
+        <a href="https://github.com/datafund/provenance"
+           class="border border-gray-300 rounded-[2px] font-bold text-lg py-3 px-8 hover:border-blue-500 hover:text-blue-500 transition-all bg-white"
+           target="_blank">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="flex flex-wrap justify-center gap-6 sm:gap-10 mt-16 pt-8 border-t border-gray-200">
+      <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span class="text-sm font-medium">Immutable</span>
+      </div>
+      <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span class="text-sm font-medium">Decentralized</span>
+      </div>
+      <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        </svg>
+        <span class="text-sm font-medium">Verifiable</span>
+      </div>
+      <div class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0110 0v4"/>
+        </svg>
+        <span class="text-sm font-medium">Trustless</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Story: Why Provenance Matters -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-bold text-3xl sm:text-4xl mb-8 text-center">The Missing Piece</h2>
+
+        <div class="prose prose-lg max-w-none text-gray-600 space-y-6">
+          <p class="text-lg leading-relaxed">
+            AI agents are making decisions at machine speed. Financial trades. Medical recommendations.
+            Content generation. <strong class="text-black">Millions of decisions, every second.</strong>
+          </p>
+
+          <p class="text-lg leading-relaxed">
+            But here's the problem: when something goes wrong, who can prove what happened?
+            When regulations demand audit trails, where's the evidence? When data becomes an asset,
+            how do you prove its lineage?
+          </p>
+
+          <div class="bg-white p-6 rounded-lg border-l-4 border-blue-500 my-8">
+            <p class="text-black font-medium text-lg mb-2">
+              "Data is the world's most valuable resource, yet it doesn't exist as an asset class."
+            </p>
+            <p class="text-gray-500">
+              Without provenance, data can't be trusted. Without trust, data can't become an asset.
+              That's what we're solving.
+            </p>
+          </div>
+
+          <p class="text-lg leading-relaxed">
+            Current solutions require trusting centralized providers. Your audit trail lives on someone else's servers.
+            Your compliance depends on their uptime. Your data sovereignty is... theoretical.
+          </p>
+
+          <p class="text-lg font-medium text-black leading-relaxed">
+            We believe provenance should be decentralized, verifiable, and owned by you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Converging Trends -->
+  <section class="max-w-7xl px-6 lg:px-10 mx-auto py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h2 class="font-bold text-3xl sm:text-4xl mb-4">Three Converging Trends</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        The need for verifiable provenance has never been more urgent.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+        <div class="text-4xl font-bold text-blue-500 mb-4">10x</div>
+        <h3 class="font-bold text-xl mb-2">AI Agent Proliferation</h3>
+        <p class="text-gray-600">
+          AI agents making autonomous decisions are proliferating across every industry.
+          Each decision needs an audit trail.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+        <div class="text-4xl font-bold text-blue-500 mb-4">2026</div>
+        <h3 class="font-bold text-xl mb-2">EU AI Act Deadline</h3>
+        <p class="text-gray-600">
+          High-risk AI systems must maintain detailed records of their operation.
+          Non-compliance means market exclusion.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+        <div class="text-4xl font-bold text-blue-500 mb-4">$0</div>
+        <h3 class="font-bold text-xl mb-2">Data Asset Value</h3>
+        <p class="text-gray-600">
+          Data can't become an asset without verified lineage.
+          Provenance is the foundation of the data economy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="demo" class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-bold text-3xl sm:text-4xl mb-4">How It Works</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Separate generation from verification. No single point of trust.
+        </p>
+      </div>
+
+      <!-- Flow Diagram -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <svg viewBox="0 0 800 180" class="w-full" xmlns="http://www.w3.org/2000/svg">
+          <!-- Generate Box -->
+          <rect x="20" y="20" width="220" height="140" rx="8" fill="#F8F9FA" stroke="#1F2937" stroke-width="1.5"/>
+          <text x="130" y="50" text-anchor="middle" fill="#1F2937" font-size="14" font-weight="bold">1. GENERATE</text>
+          <text x="130" y="80" text-anchor="middle" fill="#4B5563" font-size="12">AI agent makes decision</text>
+          <text x="130" y="100" text-anchor="middle" fill="#4B5563" font-size="12">MCP server captures:</text>
+          <text x="130" y="125" text-anchor="middle" fill="#6B7280" font-size="11">context + inputs + outputs</text>
+
+          <!-- Arrow 1 -->
+          <path d="M250 90 L290 90" stroke="#1F2937" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+
+          <!-- Store Box -->
+          <rect x="300" y="20" width="200" height="140" rx="8" fill="#F8F9FA" stroke="#1F2937" stroke-width="1.5"/>
+          <text x="400" y="50" text-anchor="middle" fill="#1F2937" font-size="14" font-weight="bold">2. STORE</text>
+          <text x="400" y="80" text-anchor="middle" fill="#4B5563" font-size="12">Encrypted & stored on</text>
+          <text x="400" y="100" text-anchor="middle" fill="#4B5563" font-size="12">Swarm Network</text>
+          <text x="400" y="125" text-anchor="middle" fill="#6B7280" font-size="11">Immutable. Decentralized. Yours.</text>
+
+          <!-- Arrow 2 -->
+          <path d="M510 90 L550 90" stroke="#1F2937" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+
+          <!-- Verify Box -->
+          <rect x="560" y="20" width="220" height="140" rx="8" fill="#F8F9FA" stroke="#1F2937" stroke-width="1.5"/>
+          <text x="670" y="50" text-anchor="middle" fill="#1F2937" font-size="14" font-weight="bold">3. VERIFY</text>
+          <text x="670" y="80" text-anchor="middle" fill="#4B5563" font-size="12">Anyone with the reference</text>
+          <text x="670" y="100" text-anchor="middle" fill="#4B5563" font-size="12">can verify authenticity</text>
+          <text x="670" y="125" text-anchor="middle" fill="#6B7280" font-size="11">Cryptographic proof of lineage</text>
+
+          <!-- Arrow definition -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#1F2937"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Code Snippet -->
+      <div class="mt-16 bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <span class="text-gray-400 text-sm ml-2">MCP Integration</span>
+        </div>
+        <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono">// Add provenance to your AI agent
+import &#123; ProvenanceMCP &#125; from '@datafund/provenance';
+
+const mcp = new ProvenanceMCP();
+const record = await mcp.store(&#123;
+  agent: 'my-agent',
+  decision: response,
+  context: inputs
+&#125;);
+
+// Anyone can verify
+const proof = await mcp.verify(record.hash);</code></pre>
+        <div class="flex flex-wrap justify-center gap-3 mt-6">
+          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">Python</span>
+          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">TypeScript</span>
+          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">Go</span>
+          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">CLI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Sovereignty & Compliance -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-bold text-3xl sm:text-4xl mb-4">Data Sovereignty & Compliance</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Your data stays where you control it. Compliance-ready from day one.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Deployment Options -->
+        <div>
+          <h3 class="font-bold text-xl mb-6">Deployment Options</h3>
+          <div class="space-y-4">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold mb-2">Decentralized (Default)</h4>
+              <p class="text-gray-600 text-sm">Censorship-resistant, globally distributed on Swarm network</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold mb-2">Self-Hosted</h4>
+              <p class="text-gray-600 text-sm">Air-gapped, on-premise for regulated industries</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold mb-2">Regional</h4>
+              <p class="text-gray-600 text-sm">EU-only nodes, MENA-compliant, APAC sovereignty</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance Matrix -->
+        <div>
+          <h3 class="font-bold text-xl mb-6">Compliance Matrix</h3>
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="p-4 text-left font-medium">Regulation</th>
+                  <th class="p-4 text-left font-medium">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b">
+                  <td class="p-4">EU AI Act (Art. 12, 13, 14)</td>
+                  <td class="p-4"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Ready</span></td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4">GDPR (Art. 30)</td>
+                  <td class="p-4"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Ready</span></td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4">VARA (Dubai)</td>
+                  <td class="p-4"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Ready</span></td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-4">NIST AI RMF</td>
+                  <td class="p-4"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">Mapped</span></td>
+                </tr>
+                <tr>
+                  <td class="p-4">HIPAA</td>
+                  <td class="p-4"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Roadmap</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-6 text-sm text-gray-600">
+            <strong>Export Formats:</strong> JSON, CSV, W3C PROV-O, SPDX
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future: On-Chain Verification -->
+  <section class="bg-gray-900 text-white py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-blue-400 font-mono text-sm">Coming Soon</span>
+        <h2 class="font-bold text-3xl sm:text-4xl mb-4 mt-2">On-Chain Verification</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Prove your AI model's training data lineage to regulators. On-chain.
+          We're building partnerships to make this real.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-blue-400 text-4xl mb-4">&#x2713;</div>
+          <h3 class="font-bold text-xl mb-2">Oracle Integration</h3>
+          <p class="text-gray-400">
+            On-chain verification that provenance records exist and are valid.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-blue-400 text-4xl mb-4">&#x21c4;</div>
+          <h3 class="font-bold text-xl mb-2">Multi-Chain Support</h3>
+          <p class="text-gray-400">
+            Sync provenance across major networks. One record, verified everywhere.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="text-blue-400 text-4xl mb-4">&#x1f512;</div>
+          <h3 class="font-bold text-xl mb-2">Proof of Provenance</h3>
+          <p class="text-gray-400">
+            Cryptographic attestation that your data lineage is intact.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-400 mb-4">Interested in partnering on on-chain verification?</p>
+        <a href="mailto:provenance@datafund.io"
+           class="text-blue-400 font-medium hover:text-blue-300 transition-colors">
+          Let's talk &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="max-w-7xl px-6 lg:px-10 mx-auto py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <h2 class="font-bold text-3xl sm:text-4xl mb-4">Use Cases</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        From AI agents to supply chains. Every decision, verifiable forever.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="border rounded-lg p-6 hover:border-blue-500 hover:shadow-md transition-all">
+        <div class="w-8 h-8 mb-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <path d="M12 2a4 4 0 014 4v1a4 4 0 01-8 0V6a4 4 0 014-4z"/>
+            <path d="M8 11v6a4 4 0 004 4v0a4 4 0 004-4v-6"/>
+            <circle cx="9" cy="6" r="1" fill="currentColor"/>
+            <circle cx="15" cy="6" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">AI Agents</h3>
+        <p class="text-gray-600 text-sm">MCP integration for autonomous agent accountability</p>
+      </div>
+
+      <div class="border rounded-lg p-6 hover:border-blue-500 hover:shadow-md transition-all">
+        <div class="w-8 h-8 mb-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Healthcare</h3>
+        <p class="text-gray-600 text-sm">Clinical trial data lineage with HIPAA compliance</p>
+      </div>
+
+      <div class="border rounded-lg p-6 hover:border-blue-500 hover:shadow-md transition-all">
+        <div class="w-8 h-8 mb-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <path d="M3 21h18M4 21V10l8-7 8 7v11M8 21v-4h8v4"/>
+            <path d="M9 14h6M12 14v-4"/>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Government</h3>
+        <p class="text-gray-600 text-sm">Self-hosted, air-gapped deployment for public sector</p>
+      </div>
+
+      <div class="border rounded-lg p-6 hover:border-blue-500 hover:shadow-md transition-all">
+        <div class="w-8 h-8 mb-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 8v4l2 2"/>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Financial</h3>
+        <p class="text-gray-600 text-sm">VARA & MiCA compliant transaction audit trails</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Swarm Foundation Fellowship -->
+  <section class="bg-gray-50 py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-sm font-mono text-gray-500 mb-6">Supported by</p>
+        <a href="https://ethswarm.org" target="_blank" class="inline-block mb-8 opacity-80 hover:opacity-100 transition-opacity">
+          <img src="/assets/swarm-logo.svg" alt="Swarm Foundation" class="h-32 sm:h-40" />
+        </a>
+        <p class="text-lg text-gray-600 mb-8">
+          This provenance toolkit is being developed as part of the
+          <a href="https://www.ethswarm.org/fellowships/datafund" target="_blank" class="text-blue-500 hover:underline">Swarm Foundation Fellowship Program</a>,
+          combining Swarm's decentralized storage with blockchain technology for ethical AI development and regulatory compliance.
+        </p>
+
+        <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
+          <h3 class="font-bold text-xl mb-4">Join the Development</h3>
+          <p class="text-gray-600 mb-6">
+            We're building provenance standards in the open. The technical specifications are being developed as SWIPs (Swarm Improvement Proposals) —
+            your input shapes the future of decentralized provenance.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/ethersphere/SWIPs"
+               class="border border-gray-300 rounded px-6 py-3 font-medium hover:border-blue-500 hover:text-blue-500 transition-colors bg-white"
+               target="_blank">
+              View SWIPs on GitHub
+            </a>
+            <a href="https://www.ethswarm.org/fellowships/datafund"
+               class="border border-gray-300 rounded px-6 py-3 font-medium hover:border-blue-500 hover:text-blue-500 transition-colors bg-white"
+               target="_blank">
+              Fellowship Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto text-center">
+      <h2 class="font-bold text-3xl sm:text-4xl mb-4">100% Open Source</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+        Built by the community, for the community. Apache 2.0 / MIT licensed.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a href="https://github.com/datafund/provenance"
+           class="bg-gray-900 text-white rounded px-6 py-3 font-medium hover:bg-gray-800 transition-colors"
+           target="_blank">
+          &#9733; Star on GitHub
+        </a>
+        <a href="https://github.com/datafund/provenance/blob/main/CONTRIBUTING.md"
+           class="border border-gray-300 rounded px-6 py-3 font-medium hover:border-blue-500 hover:text-blue-500 transition-colors bg-white"
+           target="_blank">
+          Contribution Guide
+        </a>
+      </div>
+
+      <div class="flex justify-center gap-8 text-sm text-gray-500">
+        <span>Apache 2.0 License</span>
+        <span>MIT License</span>
+        <span>Enterprise Support Available</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-7xl px-6 lg:px-10 mx-auto py-16 sm:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Message -->
+      <div class="text-center lg:text-left">
+        <h2 class="font-bold text-3xl sm:text-4xl mb-4">Ready to Get Started?</h2>
+        <p class="text-gray-600 mb-8">
+          No vendor lock-in. No central authority. Verifiable by anyone.
+          Start with the live demo or schedule a technical review with our team.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#demo"
+             class="bg-blue-500 rounded-[2px] font-bold text-lg py-3 px-8 text-white hover:bg-opacity-75 transition-all">
+            Try Live Demo
+          </a>
+          <a href="https://github.com/datafund/provenance"
+             class="border border-gray-300 rounded-[2px] font-bold text-lg py-3 px-8 hover:border-blue-500 hover:text-blue-500 transition-all"
+             target="_blank">
+            View Documentation
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="bg-gray-50 rounded-lg p-8">
+        <h3 class="font-bold text-xl mb-4">Enterprise Inquiry</h3>
+        <p class="text-gray-600 text-sm mb-6">For compliance requirements, self-hosted deployments, or custom integrations.</p>
+
+        <form class="space-y-4" id="enterprise-form">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="name">Name</label>
+            <input type="text" id="name" name="name" required
+                   class="w-full px-4 py-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="email">Work Email</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full px-4 py-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="company">Company</label>
+            <input type="text" id="company" name="company"
+                   class="w-full px-4 py-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="use-case">Use Case</label>
+            <select id="use-case" name="use-case"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none bg-white">
+              <option value="">Select...</option>
+              <option value="ai-agents">AI Agent Provenance</option>
+              <option value="healthcare">Healthcare / Clinical</option>
+              <option value="government">Government / Public Sector</option>
+              <option value="financial">Financial Services</option>
+              <option value="supply-chain">Supply Chain</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit"
+                  class="w-full bg-blue-500 rounded-[2px] font-bold py-3 text-white hover:bg-opacity-75 transition-all">
+            Schedule Technical Review
+          </button>
+        </form>
+        <p class="text-xs text-gray-500 mt-4 text-center">
+          Or email directly: <a href="mailto:provenance@datafund.io" class="text-blue-500">provenance@datafund.io</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-12">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div>
+          <img src="/assets/datafund.svg" class="h-[38px] mb-4" alt="Datafund Logo" />
+          <p class="text-sm text-gray-600 max-w-xs">
+            Building infrastructure for the fair data economy.
+          </p>
+        </div>
+
+        <div class="flex gap-8 text-sm">
+          <div>
+            <h4 class="font-bold mb-2">Product</h4>
+            <ul class="space-y-1 text-gray-600">
+              <li><a href="#demo" class="hover:text-blue-500">Demo</a></li>
+              <li><a href="https://github.com/datafund/provenance" target="_blank" class="hover:text-blue-500">GitHub</a></li>
+              <li><a href="#" class="hover:text-blue-500">Documentation</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-2">Company</h4>
+            <ul class="space-y-1 text-gray-600">
+              <li><a href="https://datafund.io" target="_blank" class="hover:text-blue-500">Datafund</a></li>
+              <li><a href="https://blog.datafund.net" target="_blank" class="hover:text-blue-500">Blog</a></li>
+              <li><a href="mailto:provenance@datafund.io" class="hover:text-blue-500">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <span>&copy; 2026 Datafund. All rights reserved.</span>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-blue-500">Privacy</a>
+          <a href="#" class="hover:text-blue-500">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .hero-gradient-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    #gradient-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Fade out gradient at bottom of hero */
+    .hero-gradient-container {
+      mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+    }
+  </style>
+
+  <script>
+    // Animated gradient using Canvas 2D
+    const canvas = document.getElementById('gradient-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let time = 0;
+      let animationId;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function draw() {
+        time += 0.003; // Slightly faster animation
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Create gradient
+        const gradient = ctx.createRadialGradient(
+          w * (0.25 + Math.sin(time) * 0.15),
+          h * (0.25 + Math.cos(time * 0.7) * 0.15),
+          0,
+          w * 0.5,
+          h * 0.5,
+          w * 0.9
+        );
+
+        // Stronger blue tones - matching Datafund blue
+        const alpha1 = 0.25 + Math.sin(time * 0.5) * 0.08;
+        const alpha2 = 0.18 + Math.cos(time * 0.3) * 0.06;
+
+        gradient.addColorStop(0, `rgba(0, 0, 255, ${alpha1})`);
+        gradient.addColorStop(0.4, `rgba(59, 130, 246, ${alpha2})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, w, h);
+
+        // Second gradient blob
+        const gradient2 = ctx.createRadialGradient(
+          w * (0.75 + Math.cos(time * 0.8) * 0.15),
+          h * (0.5 + Math.sin(time * 0.6) * 0.15),
+          0,
+          w * 0.6,
+          h * 0.5,
+          w * 0.7
+        );
+
+        const alpha3 = 0.15 + Math.sin(time * 0.4) * 0.05;
+        gradient2.addColorStop(0, `rgba(99, 102, 241, ${alpha3})`);
+        gradient2.addColorStop(0.5, `rgba(139, 92, 246, ${0.1})`);
+        gradient2.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+        ctx.fillStyle = gradient2;
+        ctx.fillRect(0, 0, w, h);
+
+        // Third gradient blob for more depth
+        const gradient3 = ctx.createRadialGradient(
+          w * (0.5 + Math.sin(time * 0.9) * 0.2),
+          h * (0.7 + Math.cos(time * 0.5) * 0.1),
+          0,
+          w * 0.5,
+          h * 0.6,
+          w * 0.5
+        );
+
+        const alpha4 = 0.12 + Math.cos(time * 0.6) * 0.04;
+        gradient3.addColorStop(0, `rgba(0, 0, 255, ${alpha4})`);
+        gradient3.addColorStop(0.6, `rgba(59, 130, 246, ${0.06})`);
+        gradient3.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+        ctx.fillStyle = gradient3;
+        ctx.fillRect(0, 0, w, h);
+
+        animationId = requestAnimationFrame(draw);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      draw();
+
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', () => {
+        cancelAnimationFrame(animationId);
+      });
+    }
+  </script>
+</Layout>

@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Decentralized provenance storage for AI agents. Store, verify, and audit AI decision trails without vendor lock-in. 100% open source." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+
+    <!-- Crawler Blocking (Required by campaigns module) -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://provenance.datafund.io" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- PostHog Tracking (Required by campaigns module) -->
+    <script is:inline src="https://eu-assets.i.posthog.com/static/array.js"></script>
+    <script is:inline>
+      // PostHog initialization - replace with actual key from env
+      if (typeof posthog !== 'undefined') {
+        posthog.init('phc_REPLACE_WITH_ACTUAL_KEY', {
+          api_host: 'https://eu.i.posthog.com',
+          capture_pageview: true,
+          capture_pageleave: 'if_capture_pageview'
+        });
+      }
+
+      // UTM Parameter Capture (Required by campaigns module)
+      function getUTMParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          source: params.get('utm_source'),
+          medium: params.get('utm_medium'),
+          campaign: params.get('utm_campaign'),
+          content: params.get('utm_content'),
+          term: params.get('utm_term')
+        };
+      }
+
+      // Store UTM params for form submissions
+      window.utmParams = getUTMParams();
+    </script>
+  </head>
+  <body class="antialiased bg-white text-black">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Geist";
+    src: url("/assets/fonts/GeistVF.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/assets/fonts/GeistMonoVF.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: #0000FF;
+    color: white;
+  }
+</style>
