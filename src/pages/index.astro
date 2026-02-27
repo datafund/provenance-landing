@@ -647,9 +647,9 @@ const proof = await mcp.verify(record.hash);</code></pre>
     // Animated gradient using Canvas 2D
     const canvas = document.getElementById('gradient-canvas');
     if (canvas) {
-      const ctx = canvas.getContext('2d');
+      const ctx = (canvas as HTMLCanvasElement).getContext('2d');
       let time = 0;
-      let animationId;
+      let animationId: number;
 
       function resize() {
         canvas.width = window.innerWidth;

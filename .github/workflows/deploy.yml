@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: build
-        run: npm run build
+        run: npx astro build
 
       - name: setup ssh
         run: |
