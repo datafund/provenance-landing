@@ -232,31 +232,92 @@ import Layout from '../layouts/Layout.astro';
         </svg>
       </div>
 
-      <!-- Code Snippet -->
-      <div class="mt-16 bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto">
-        <div class="flex items-center gap-2 mb-4">
-          <div class="w-3 h-3 rounded-full bg-red-500"></div>
-          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div class="w-3 h-3 rounded-full bg-green-500"></div>
-          <span class="text-gray-400 text-sm ml-2">MCP Integration</span>
+      <!-- Code Snippets (Tabbed) -->
+      <div class="mt-16 bg-gray-900 rounded-lg max-w-2xl mx-auto overflow-hidden" id="code-tabs">
+        <!-- Tab Bar -->
+        <div class="flex border-b border-gray-700">
+          <button class="code-tab active px-5 py-3 text-sm font-mono text-gray-300 hover:text-white transition-colors border-b-2 border-blue-500"
+                  data-tab="sdk">SDK (TypeScript)</button>
+          <button class="code-tab px-5 py-3 text-sm font-mono text-gray-300 hover:text-white transition-colors border-b-2 border-transparent"
+                  data-tab="cli">CLI (Python)</button>
+          <button class="code-tab px-5 py-3 text-sm font-mono text-gray-300 hover:text-white transition-colors border-b-2 border-transparent"
+                  data-tab="mcp">MCP (AI Agents)</button>
         </div>
-        <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono">// Add provenance to your AI agent
-import &#123; ProvenanceMCP &#125; from '@datafund/provenance';
 
-const mcp = new ProvenanceMCP();
-const record = await mcp.store(&#123;
-  agent: 'my-agent',
-  decision: response,
-  context: inputs
+        <!-- SDK Panel -->
+        <div class="code-panel p-6" data-panel="sdk">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-gray-400 text-sm ml-2">@datafund/swarm-provenance</span>
+          </div>
+          <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono"><span class="text-gray-500">// pnpm add @datafund/swarm-provenance</span>
+import &#123; ProvenanceClient &#125; from '@datafund/swarm-provenance';
+
+const client = new ProvenanceClient();
+
+<span class="text-gray-500">// Upload with provenance metadata</span>
+const result = await client.upload('Hello, World!', &#123;
+  standard: 'v1'
 &#125;);
+console.log('Reference:', result.reference);
 
-// Anyone can verify
-const proof = await mcp.verify(record.hash);</code></pre>
-        <div class="flex flex-wrap justify-center gap-3 mt-6">
-          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">Python</span>
-          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">TypeScript</span>
-          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">Go</span>
-          <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded font-mono text-sm">CLI</span>
+<span class="text-gray-500">// Download and verify integrity</span>
+const data = await client.download(result.reference);</code></pre>
+        </div>
+
+        <!-- CLI Panel -->
+        <div class="code-panel p-6 hidden" data-panel="cli">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-gray-400 text-sm ml-2">swarm-provenance-uploader</span>
+          </div>
+          <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono"><span class="text-gray-500"># Clone and install</span>
+$ git clone https://github.com/datafund/swarm_provenance_CLI.git
+$ cd swarm_provenance_CLI
+$ pip install -e .
+
+<span class="text-gray-500"># Upload a file with provenance</span>
+$ swarm-prov-upload upload --file /path/to/data.txt
+
+<span class="text-gray-500"># Download and verify</span>
+$ swarm-prov-upload download &lt;swarm_hash&gt; --output-dir ./downloads
+
+<span class="text-gray-500"># Anchor on-chain (Base Sepolia)</span>
+$ swarm-prov-upload chain anchor &lt;data_hash&gt; --data-type document</code></pre>
+        </div>
+
+        <!-- MCP Panel -->
+        <div class="code-panel p-6 hidden" data-panel="mcp">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="text-gray-400 text-sm ml-2">swarm-provenance-mcp</span>
+          </div>
+          <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono"><span class="text-gray-500"># Clone and install</span>
+$ git clone https://github.com/datafund/swarm_provenance_mcp.git
+$ cd swarm_provenance_mcp
+$ pip install -e .
+
+<span class="text-gray-500"># Add to claude_desktop_config.json</span>
+&#123;
+  "mcpServers": &#123;
+    "swarm-provenance": &#123;
+      "command": "swarm-provenance-mcp",
+      "env": &#123;
+        "SWARM_GATEWAY_URL":
+          "https://provenance-gateway.datafund.io"
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+          <p class="text-gray-500 text-xs mt-4">
+            <a href="https://github.com/datafund/swarm_provenance_mcp" target="_blank" class="text-blue-400 hover:text-blue-300">View repo for full setup</a>
+          </p>
         </div>
       </div>
     </div>
@@ -644,6 +705,28 @@ const proof = await mcp.verify(record.hash);</code></pre>
   </style>
 
   <script>
+    // Code snippet tab switching
+    document.querySelectorAll('.code-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = (tab as HTMLElement).dataset.tab;
+        // Update tabs
+        document.querySelectorAll('.code-tab').forEach(t => {
+          t.classList.remove('active', 'border-blue-500');
+          t.classList.add('border-transparent');
+        });
+        tab.classList.add('active', 'border-blue-500');
+        tab.classList.remove('border-transparent');
+        // Update panels
+        document.querySelectorAll('.code-panel').forEach(p => {
+          if ((p as HTMLElement).dataset.panel === target) {
+            p.classList.remove('hidden');
+          } else {
+            p.classList.add('hidden');
+          }
+        });
+      });
+    });
+
     // Animated gradient using Canvas 2D
     const canvas = document.getElementById('gradient-canvas');
     if (canvas) {
