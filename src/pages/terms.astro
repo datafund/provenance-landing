@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Terms of Use - Datafund Provenance">
+  <nav class="max-w-7xl px-6 lg:px-10 pt-8 flex justify-between items-center mx-auto">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/assets/datafund.svg" class="h-[38px]" alt="Datafund Logo" />
+      <span class="text-sm font-mono text-gray-500">/ provenance</span>
+    </a>
+  </nav>
+
+  <main class="max-w-3xl px-6 lg:px-10 mx-auto py-16">
+    <h1 class="font-bold text-3xl sm:text-4xl mb-2">Terms of Use</h1>
+    <p class="text-sm text-gray-500 mb-12">Last updated: February 2026</p>
+
+    <div class="prose prose-lg max-w-none space-y-8 text-gray-700">
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Alpha Software</h2>
+        <p>
+          The Datafund Provenance Toolkit is in <strong>alpha / proof-of-concept stage</strong>. This means:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mt-3">
+          <li>APIs, interfaces, and data formats may change without notice</li>
+          <li>Data persistence is not guaranteed — Swarm storage depends on postage stamp validity</li>
+          <li>Features may be incomplete, unstable, or removed in future versions</li>
+          <li>The software is not recommended for production use with critical or irreplaceable data</li>
+        </ul>
+        <p class="mt-3">
+          Use the toolkit with the understanding that it is under active development. Act accordingly and keep backups of any important data.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">No Warranty</h2>
+        <p>
+          The software is provided <strong>"as is"</strong>, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement.
+        </p>
+        <p>
+          In no event shall the authors, contributors, or Datafund be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Immutability of Blockchain Records</h2>
+        <p>
+          Data hashes anchored on-chain via the Provenance Toolkit are <strong>permanent and cannot be modified, reversed, or deleted</strong>. By anchoring data on the blockchain, you acknowledge and accept that this action is irreversible. Exercise caution and review your data before performing on-chain operations.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Public Nature of Stored Data</h2>
+        <p>
+          Data uploaded to the Swarm decentralized network may be <strong>publicly accessible</strong> if not encrypted prior to upload. Both the Swarm network and supported blockchains are global infrastructure — data is distributed across nodes worldwide and cannot be restricted to a specific geographic region. You are solely responsible for ensuring appropriate encryption of sensitive or confidential data before using the toolkit.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">User Responsibility</h2>
+        <p>
+          You are responsible for:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mt-3">
+          <li>Ensuring you have the legal right to upload and publish any data you submit</li>
+          <li>Complying with all applicable laws and regulations in your jurisdiction</li>
+          <li>Understanding the implications of storing data on public, decentralized infrastructure</li>
+          <li>Managing your own cryptographic keys, wallet credentials, and postage stamps</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Open Source License</h2>
+        <p>
+          The Provenance Toolkit is released under the <strong>MIT License</strong>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the license terms. The full license text is available in each component repository at
+          <a href="https://github.com/datafund/provenance" target="_blank" class="text-blue-500 hover:underline">github.com/datafund/provenance</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by applicable law, Datafund and its contributors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of the toolkit or this website.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Changes to These Terms</h2>
+        <p>
+          We may update these terms as the toolkit evolves. Significant changes will be noted on this page. Continued use of the toolkit after changes constitutes acceptance of the updated terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Contact</h2>
+        <p>
+          Questions about these terms? Email us at
+          <a href="mailto:provenance@datafund.io" class="text-blue-500 hover:underline">provenance@datafund.io</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-100 py-8 mt-16">
+    <div class="max-w-3xl px-6 lg:px-10 mx-auto text-center text-sm text-gray-500">
+      <span>&copy; 2026 Datafund. All rights reserved.</span>
+      <span class="mx-2">&middot;</span>
+      <a href="/privacy" class="hover:text-blue-500">Privacy</a>
+      <span class="mx-2">&middot;</span>
+      <a href="/terms" class="hover:text-blue-500">Terms</a>
+    </div>
+  </footer>
+</Layout>

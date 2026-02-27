@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy Policy - Datafund Provenance">
+  <nav class="max-w-7xl px-6 lg:px-10 pt-8 flex justify-between items-center mx-auto">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/assets/datafund.svg" class="h-[38px]" alt="Datafund Logo" />
+      <span class="text-sm font-mono text-gray-500">/ provenance</span>
+    </a>
+  </nav>
+
+  <main class="max-w-3xl px-6 lg:px-10 mx-auto py-16">
+    <h1 class="font-bold text-3xl sm:text-4xl mb-2">Privacy Policy</h1>
+    <p class="text-sm text-gray-500 mb-12">Last updated: February 2026</p>
+
+    <div class="prose prose-lg max-w-none space-y-8 text-gray-700">
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Website Analytics</h2>
+        <p>
+          This website may collect basic, anonymous visitor analytics such as page views, referral sources, and approximate geographic region. We use this data solely to understand how the site is used and to improve it.
+        </p>
+        <p>
+          We do not sell, share, or transfer any visitor data to third parties. We aim for minimal data collection — no personal profiles are built from your visit.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Cookies</h2>
+        <p>
+          This site may use minimal cookies for analytics purposes only. No cookies are used for advertising or cross-site tracking.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Data Stored via the Provenance Toolkit</h2>
+        <p>
+          The Datafund Provenance Toolkit enables you to store data on the <strong>Swarm decentralized network</strong> and optionally anchor data hashes on a <strong>public blockchain</strong> (currently Base). It is important to understand the privacy implications of using these tools:
+        </p>
+
+        <h3 class="font-bold text-lg text-black mt-6 mb-2">Public by Default</h3>
+        <p>
+          Data uploaded to the Swarm network is stored on a public, decentralized network. <strong>If your data is not encrypted before upload, it may be accessible to anyone</strong> who has the Swarm reference hash. You are responsible for encrypting sensitive data before uploading.
+        </p>
+        <p>
+          Both the Swarm network and supported blockchains are <strong>global infrastructure</strong> — data is distributed across nodes worldwide. There is no way to restrict data to a specific geographic region once uploaded.
+        </p>
+
+        <h3 class="font-bold text-lg text-black mt-6 mb-2">Immutable and Non-Deletable</h3>
+        <p>
+          Data hashes anchored on the blockchain are <strong>immutable and cannot be modified or deleted</strong>. Once a record is written on-chain, it exists permanently. Even data stored on Swarm (off-chain) cannot be selectively removed from the network — it remains available for the duration of its postage stamp validity.
+        </p>
+        <p>
+          Think carefully before uploading. If data should not be permanently public, encrypt it first or do not upload it.
+        </p>
+
+        <h3 class="font-bold text-lg text-black mt-6 mb-2">Swarm Storage Duration</h3>
+        <p>
+          Data on Swarm is rented storage — it persists as long as the associated postage stamp is valid. When the stamp expires, data may become unavailable. This is not a guarantee of deletion; data may still be cached by network nodes.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Your Responsibility</h2>
+        <p>
+          By using the Provenance Toolkit, you accept responsibility for the data you upload. Ensure that you have the right to store and publish any data you submit, and that you understand the permanent, public nature of blockchain-anchored records.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-bold text-xl text-black mb-3">Contact</h2>
+        <p>
+          Questions about this policy? Email us at
+          <a href="mailto:provenance@datafund.io" class="text-blue-500 hover:underline">provenance@datafund.io</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-100 py-8 mt-16">
+    <div class="max-w-3xl px-6 lg:px-10 mx-auto text-center text-sm text-gray-500">
+      <span>&copy; 2026 Datafund. All rights reserved.</span>
+      <span class="mx-2">&middot;</span>
+      <a href="/privacy" class="hover:text-blue-500">Privacy</a>
+      <span class="mx-2">&middot;</span>
+      <a href="/terms" class="hover:text-blue-500">Terms</a>
+    </div>
+  </footer>
+</Layout>
