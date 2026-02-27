@@ -323,6 +323,90 @@ $ pip install -e .
     </div>
   </section>
 
+  <!-- Toolkit Packages -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-7xl px-6 lg:px-10 mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-bold text-3xl sm:text-4xl mb-4">The Toolkit</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Four open-source components. Pick what fits your stack.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- SDK -->
+        <a href="https://github.com/datafund/swarm_provenance_SDK" target="_blank"
+           class="bg-gray-900 rounded-lg p-5 hover:ring-2 hover:ring-blue-500 transition-all group">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-blue-400 font-mono text-sm font-bold">SDK</span>
+              <span class="text-gray-500 text-xs">TypeScript</span>
+            </div>
+            <span class="text-gray-600 text-xs font-mono">v0.2.0 &middot; alpha</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-3">Upload, download, notary signing, and blockchain anchoring for browser and Node.js.</p>
+          <div class="bg-gray-800 rounded px-3 py-2 font-mono text-sm text-green-400">
+            $ pnpm add @datafund/swarm-provenance
+          </div>
+        </a>
+
+        <!-- CLI -->
+        <a href="https://github.com/datafund/swarm_provenance_CLI" target="_blank"
+           class="bg-gray-900 rounded-lg p-5 hover:ring-2 hover:ring-blue-500 transition-all group">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-blue-400 font-mono text-sm font-bold">CLI</span>
+              <span class="text-gray-500 text-xs">Python</span>
+            </div>
+            <span class="text-gray-600 text-xs font-mono">v0.8.0 &middot; beta</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-3">Full-featured command-line tool — stamps, collections, notary, x402 payments, on-chain anchoring.</p>
+          <div class="bg-gray-800 rounded px-3 py-2 font-mono text-sm text-green-400">
+            $ git clone &amp; pip install -e .
+          </div>
+        </a>
+
+        <!-- MCP Server -->
+        <a href="https://github.com/datafund/swarm_provenance_mcp" target="_blank"
+           class="bg-gray-900 rounded-lg p-5 hover:ring-2 hover:ring-blue-500 transition-all group">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-blue-400 font-mono text-sm font-bold">MCP Server</span>
+              <span class="text-gray-500 text-xs">Python</span>
+            </div>
+            <span class="text-gray-600 text-xs font-mono">v0.1.0 &middot; alpha</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-3">AI agent integration via Model Context Protocol. Works with Claude Desktop out of the box.</p>
+          <div class="bg-gray-800 rounded px-3 py-2 font-mono text-sm text-green-400">
+            $ git clone &amp; pip install -e .
+          </div>
+        </a>
+
+        <!-- Gateway -->
+        <a href="https://github.com/datafund/swarm_connect" target="_blank"
+           class="bg-gray-900 rounded-lg p-5 hover:ring-2 hover:ring-blue-500 transition-all group">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-blue-400 font-mono text-sm font-bold">Gateway</span>
+              <span class="text-gray-500 text-xs">Python / FastAPI</span>
+            </div>
+            <span class="text-gray-600 text-xs font-mono">alpha</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-3">FastAPI server bridging clients to Swarm. Handles stamps, uploads, notary signing.</p>
+          <div class="bg-gray-800 rounded px-3 py-2 font-mono text-sm text-gray-500">
+            Public gateway: provenance-gateway.datafund.io
+          </div>
+        </a>
+      </div>
+
+      <p class="text-center text-sm text-gray-500 mt-8">
+        All components are MIT licensed. See the
+        <a href="https://github.com/datafund/provenance" target="_blank" class="text-blue-500 hover:underline">umbrella repo</a>
+        for the full architecture overview.
+      </p>
+    </div>
+  </section>
+
   <!-- Data Sovereignty & Compliance -->
   <section class="bg-gray-50 py-16 sm:py-24">
     <div class="max-w-7xl px-6 lg:px-10 mx-auto">
