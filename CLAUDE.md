@@ -31,8 +31,24 @@ npm run build  # or: npx astro build
 ~/.datacore/modules/campaigns/scripts/deploy-site.sh provenance.datafund.io
 ```
 
+## Provenance Ecosystem Repos
+
+The landing page describes the Datafund Provenance Toolkit. Sibling repos live one level up at `../` and are the source of truth for package features, versions, and documentation:
+
+| Repo | Type | Language | Package | Description |
+|------|------|----------|---------|-------------|
+| `swarm_provenance_SDK/` | SDK | TypeScript | `@datafund/swarm-provenance` | High-level upload/download, notary signing, blockchain anchoring |
+| `swarm_provenance_CLI/` | CLI | Python | `swarm-provenance-uploader` | Full-featured CLI with stamps, collections, x402 payments, GDPR deletion |
+| `swarm_provenance_mcp/` | MCP Server | Python | `swarm-provenance-mcp` | AI agent interface (Claude Desktop integration) |
+| `ConsentsBasedDataProvenance/` | Smart Contracts | Solidity | `consents-based-data-provenance` | 9 contracts: consent, provenance, access control, GDPR deletion |
+| `provenance-smasher/` | Test Suite | Python | - | Multi-layer QA: gateway, SDK, CLI, MCP, fuzz, load, security |
+| `provenance-fellowship/` | Docs/PM | Markdown | - | Swarm Fellowship program coordination and milestones |
+| `swarm_connect/` | Gateway | Python | - | FastAPI gateway bridging clients to Swarm network |
+
+When updating landing page content (features, install commands, code snippets, version numbers), read the relevant sibling repo's README and source for accurate information.
+
 ## Related
 
 - GitHub: https://github.com/datafund/provenance-landing
 - Server: `deploy@$DO_DROPLET_IP:/var/www/sites/provenance.datafund.io/`
-- Parent space: `/Users/gregor/Data/1-datafund/`
+- Parent space: `../../` (1-datafund)
