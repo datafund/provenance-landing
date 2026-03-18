@@ -292,32 +292,151 @@ $ swarm-prov-upload chain anchor &lt;data_hash&gt; --data-type document</code></
         </div>
 
         <!-- MCP Panel -->
-        <div class="code-panel p-6 hidden" data-panel="mcp">
-          <div class="flex items-center gap-2 mb-4">
+        <div class="code-panel hidden" data-panel="mcp">
+          <div class="flex items-center gap-2 px-6 pt-5 pb-3">
             <div class="w-3 h-3 rounded-full bg-red-500"></div>
             <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
             <span class="text-gray-400 text-sm ml-2">swarm-provenance-mcp</span>
           </div>
-          <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono"><span class="text-gray-500"># Clone and install</span>
-$ git clone https://github.com/datafund/swarm_provenance_mcp.git
-$ cd swarm_provenance_mcp
-$ pip install -e .
 
-<span class="text-gray-500"># Add to claude_desktop_config.json</span>
+          <!-- MCP Sub-tab Bar -->
+          <div class="flex gap-2 px-6 pb-3">
+            <button class="mcp-subtab active text-xs font-mono px-3 py-1 rounded-full bg-gray-700 text-white transition-colors" data-subtab="setup">Setup</button>
+            <button class="mcp-subtab text-xs font-mono px-3 py-1 rounded-full bg-transparent text-gray-500 hover:text-gray-300 transition-colors" data-subtab="modes">Modes</button>
+            <button class="mcp-subtab text-xs font-mono px-3 py-1 rounded-full bg-transparent text-gray-500 hover:text-gray-300 transition-colors" data-subtab="tools">Tools</button>
+            <button class="mcp-subtab text-xs font-mono px-3 py-1 rounded-full bg-transparent text-gray-500 hover:text-gray-300 transition-colors" data-subtab="tryit">Try It</button>
+          </div>
+
+          <!-- Setup Sub-panel -->
+          <div class="mcp-subpanel px-6 pb-5" data-subpanel="setup">
+            <p class="text-gray-400 text-xs mb-3 font-mono">virtualenv install + Claude Desktop config</p>
+            <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono"><span class="text-gray-500"># claude_desktop_config.json</span>
 &#123;
   "mcpServers": &#123;
     "swarm-provenance": &#123;
-      "command": "swarm-provenance-mcp",
-      "env": &#123;
-        "SWARM_GATEWAY_URL":
-          "https://provenance-gateway.datafund.io"
-      &#125;
+      "command": "/path/to/venv/bin/python",
+      "args": ["-m", "swarm_provenance_mcp.server"],
+      "cwd": "/path/to/swarm_provenance_mcp"
     &#125;
   &#125;
 &#125;</code></pre>
-          <p class="text-gray-500 text-xs mt-4">
-            <a href="https://github.com/datafund/swarm_provenance_mcp" target="_blank" class="text-blue-400 hover:text-blue-300">View repo for full setup</a>
+            <div class="border-t border-gray-700 mt-4 pt-4">
+              <p class="text-gray-500 text-xs mb-2 font-mono">or use Docker</p>
+              <pre class="text-sm text-gray-300 overflow-x-auto"><code class="font-mono">&#123;
+  "mcpServers": &#123;
+    "swarm-provenance": &#123;
+      "command": "docker",
+      "args": ["run", "-i", "--rm",
+        "ghcr.io/datafund/swarm-provenance-mcp"]
+    &#125;
+  &#125;
+&#125;</code></pre>
+            </div>
+          </div>
+
+          <!-- Modes Sub-panel -->
+          <div class="mcp-subpanel px-6 pb-5 hidden" data-subpanel="modes">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead>
+                  <tr class="text-gray-500 text-xs border-b border-gray-700">
+                    <th class="pb-2 pr-4 font-medium">Mode</th>
+                    <th class="pb-2 pr-4 font-medium">Config</th>
+                    <th class="pb-2 font-medium">Capability</th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-300">
+                  <tr class="border-b border-gray-800">
+                    <td class="py-2 pr-4"><span class="text-green-400 font-medium">Storage Only</span></td>
+                    <td class="py-2 pr-4 font-mono text-xs text-gray-400">default</td>
+                    <td class="py-2 text-xs">Upload &amp; download via Swarm</td>
+                  </tr>
+                  <tr class="border-b border-gray-800">
+                    <td class="py-2 pr-4"><span class="text-blue-400 font-medium">Read-Only Chain</span></td>
+                    <td class="py-2 pr-4 font-mono text-xs text-gray-400">CHAIN_ENABLED=true</td>
+                    <td class="py-2 text-xs">+ verify &amp; read on-chain data</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-4"><span class="text-purple-400 font-medium">Full Provenance</span></td>
+                    <td class="py-2 pr-4 font-mono text-xs text-gray-400">PROVENANCE_WALLET_KEY</td>
+                    <td class="py-2 text-xs">+ anchor, record, transfer on-chain</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tools Sub-panel -->
+          <div class="mcp-subpanel px-6 pb-5 hidden" data-subpanel="tools">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="flex items-start gap-2">
+                <span class="text-green-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">upload_data</p>
+                  <p class="text-gray-500 text-xs">Store data on Swarm network</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">download_data</p>
+                  <p class="text-gray-500 text-xs">Retrieve by reference hash</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-purple-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">anchor_hash</p>
+                  <p class="text-gray-500 text-xs">Register hash on-chain</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">verify_hash</p>
+                  <p class="text-gray-500 text-xs">Check on-chain registration</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-purple-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">record_transform</p>
+                  <p class="text-gray-500 text-xs">Link original to derived data</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400 font-mono text-xs mt-0.5">&#9679;</span>
+                <div>
+                  <p class="text-gray-200 text-sm font-mono">get_provenance_chain</p>
+                  <p class="text-gray-500 text-xs">Trace full data lineage</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600 text-xs mt-3">15 tools total &mdash; <span class="text-green-400">&#9679;</span> storage &nbsp;<span class="text-blue-400">&#9679;</span> read chain &nbsp;<span class="text-purple-400">&#9679;</span> write chain</p>
+          </div>
+
+          <!-- Try It Sub-panel -->
+          <div class="mcp-subpanel px-6 pb-5 hidden" data-subpanel="tryit">
+            <p class="text-gray-500 text-xs mb-3">Ask your AI agent in natural language:</p>
+            <div class="space-y-2">
+              <div class="bg-gray-800 rounded-lg px-4 py-2 text-sm text-gray-200 inline-block max-w-full">
+                &ldquo;Upload this file to Swarm and give me the reference hash&rdquo;
+              </div>
+              <div class="bg-gray-800 rounded-lg px-4 py-2 text-sm text-gray-200 inline-block max-w-full">
+                &ldquo;Anchor this hash on-chain so I can prove it existed today&rdquo;
+              </div>
+              <div class="bg-gray-800 rounded-lg px-4 py-2 text-sm text-gray-200 inline-block max-w-full">
+                &ldquo;Show me the full provenance chain for this data reference&rdquo;
+              </div>
+              <div class="bg-gray-800 rounded-lg px-4 py-2 text-sm text-gray-200 inline-block max-w-full">
+                &ldquo;Verify if this document hash was registered on-chain&rdquo;
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-500 text-xs px-6 pb-4">
+            <a href="https://github.com/datafund/swarm_provenance_mcp" target="_blank" class="text-blue-400 hover:text-blue-300">Full docs on GitHub &rarr;</a>
           </p>
         </div>
       </div>
@@ -375,11 +494,11 @@ $ pip install -e .
               <span class="text-blue-400 font-mono text-sm font-bold">MCP Server</span>
               <span class="text-gray-500 text-xs">Python</span>
             </div>
-            <span class="text-gray-600 text-xs font-mono">v0.1.0 &middot; alpha</span>
+            <span class="text-gray-600 text-xs font-mono">v0.1.0 &middot; beta</span>
           </div>
-          <p class="text-gray-400 text-sm mb-3">AI agent integration via Model Context Protocol. Works with Claude Desktop out of the box.</p>
+          <p class="text-gray-400 text-sm mb-3">AI agent integration via Model Context Protocol. 15 tools, on-chain anchoring, Docker support.</p>
           <div class="bg-gray-800 rounded px-3 py-2 font-mono text-sm text-green-400">
-            $ git clone &amp; pip install -e .
+            $ docker run -i --rm ghcr.io/datafund/swarm-provenance-mcp
           </div>
         </a>
 
@@ -771,6 +890,26 @@ $ pip install -e .
   </style>
 
   <script>
+    // Reset MCP sub-tabs to Setup (default)
+    function resetMcpSubtabs() {
+      document.querySelectorAll('.mcp-subtab').forEach(t => {
+        if ((t as HTMLElement).dataset.subtab === 'setup') {
+          t.classList.add('active', 'bg-gray-700', 'text-white');
+          t.classList.remove('bg-transparent', 'text-gray-500');
+        } else {
+          t.classList.remove('active', 'bg-gray-700', 'text-white');
+          t.classList.add('bg-transparent', 'text-gray-500');
+        }
+      });
+      document.querySelectorAll('.mcp-subpanel').forEach(p => {
+        if ((p as HTMLElement).dataset.subpanel === 'setup') {
+          p.classList.remove('hidden');
+        } else {
+          p.classList.add('hidden');
+        }
+      });
+    }
+
     // Code snippet tab switching
     document.querySelectorAll('.code-tab').forEach(tab => {
       tab.addEventListener('click', () => {
@@ -785,6 +924,32 @@ $ pip install -e .
         // Update panels
         document.querySelectorAll('.code-panel').forEach(p => {
           if ((p as HTMLElement).dataset.panel === target) {
+            p.classList.remove('hidden');
+          } else {
+            p.classList.add('hidden');
+          }
+        });
+        // Reset MCP sub-tabs when switching to MCP tab
+        if (target === 'mcp') {
+          resetMcpSubtabs();
+        }
+      });
+    });
+
+    // MCP sub-tab switching
+    document.querySelectorAll('.mcp-subtab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = (tab as HTMLElement).dataset.subtab;
+        // Update sub-tabs
+        document.querySelectorAll('.mcp-subtab').forEach(t => {
+          t.classList.remove('active', 'bg-gray-700', 'text-white');
+          t.classList.add('bg-transparent', 'text-gray-500');
+        });
+        tab.classList.add('active', 'bg-gray-700', 'text-white');
+        tab.classList.remove('bg-transparent', 'text-gray-500');
+        // Update sub-panels
+        document.querySelectorAll('.mcp-subpanel').forEach(p => {
+          if ((p as HTMLElement).dataset.subpanel === target) {
             p.classList.remove('hidden');
           } else {
             p.classList.add('hidden');
